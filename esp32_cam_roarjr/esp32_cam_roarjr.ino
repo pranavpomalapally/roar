@@ -5,7 +5,6 @@
 #include <ESP32Servo.h>
 #include <ESPAsyncWebServer.h>
 #include <AsyncTCP.h>
-//#include "esp_camera.h"
 
 #define ENA    4
 #define IN1    2
@@ -21,10 +20,10 @@
 
 
 // CHANGE YOUR WIFI CREDENTIALS!
-//char* WIFI_SSID = "NETGEAR05";
-//char* WIFI_PASS = "wuxiaohua1011";
-char* WIFI_SSID = "da pad";
-char* WIFI_PASS = "fuckraj!";
+char* WIFI_SSID = "NETGEAR05";
+char* WIFI_PASS = "wuxiaohua1011";
+//char* WIFI_SSID = "da pad";
+//char* WIFI_PASS = "fuckraj!";
 const uint8_t fps = 10;    //sets minimum delay between frames, HW limits of ESP32 allows about 12fps @ 800x600
 
 

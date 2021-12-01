@@ -1,18 +1,21 @@
-#importing websocket
+#imports
 from websocket import create_connection
-
-# importing pygame module
 import pygame
- 
-# importing sys module
 import sys
+import urllib.request
+import numpy as np
+import cv2 
  
 # initialising pygame and create display
 pygame.init()
 display = pygame.display.set_mode((300, 300))
+pygame.display.set_caption("WASD Keys to control")
 
 # create websocket connection
-ws = create_connection("ws://192.168.50.228:81/control")
+host = "192.168.50.228"
+host = "10.0.0.66"
+#ws = create_connection("ws://192.168.50.228:81/control")
+ws = create_connection("ws://10.0.0.66:81/control")
 
 # speed var
 speed = "250"
@@ -26,9 +29,16 @@ def quit():
  
 # creating a running loop
 while True:
-   #ws = create_connection("ws://192.168.50.228:81/control")
        
     # creating a loop to check events that are occuring
+    imgResp = urllib.request.urlopen(f'http://10.0.0.66/cam-lo.jpg')
+    imgNp = np.frombuffer(imgResp.read(), dtype=np.uint8)
+    img = cv2.imdecode(imgNp, -1)
+    # all the opencv processing is done here
+
+    # Look into Pygame instead of OpenCV to allow for keyboard inputs
+    cv2.imshow('test', img)
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             quit()
